@@ -11,25 +11,16 @@ function buildPost(dir, files) {
     files: {},
   };
 
-  let filesProcessed = 0;
-
-  files.forEach((file, index, array) => {
-    fs.readFile(`${dir}/${file}`, 'utf8', (error, content) => {
-      if (error) throw error;
-      post.files[file] = {
-        content,
-      };
-
-      filesProcessed++;
-      if (filesProcessed === array.length) {
-        accessGitHub.postGist(post);
-      }
-    });
-  });
+  files.reduce((acc, cur) => {
+    const content = fs.readFileSync(`${dir}/${cur}`, 'utf8');
+    acc.files[cur] = { content };
+    return acc;
+  }, post);
+  accessGitHub.postGist(post);
 }
 
 function readFile(name) {
-  buildPost(`${process.cwd()}/`, [name]);
+  buildPost(`${process.cwd()}`, [name]);
 }
 
 function readDirectory(dirName) {
