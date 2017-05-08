@@ -9,7 +9,8 @@
   "author": "Tony Rinaldi",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.16.1"
+    "axios": "^0.16.1",
+    "colors": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
