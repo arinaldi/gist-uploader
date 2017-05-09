@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "readline-sync": "^1.4.7"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
